@@ -17,20 +17,13 @@ namespace ConsoleApp7
         private List<Vector2> opponentPiecesInReach = new List<Vector2>();
         private List<Vector2> ourPiecesInReach = new List<Vector2>();
 
-
-
         public Rook(Vector2 pos, string col, string imgp) : base(pos, col, imgp, "rook")
         {
             movesPossible = MovesPossible;
             opponentPiecesInReach = OpponentsPiecesInReach;
             pieceImg = Raylib.LoadImage(imgp);
             pieceTxt = Raylib.LoadTextureFromImage(pieceImg);
-
         }
-
-
-        
-
         public override void BringMoves(List<Piece> Pieces, List<Vector2> checkSquares, Vector2 attackerPos, bool check)
         {
             Vector2 position = Position;
@@ -52,17 +45,14 @@ namespace ConsoleApp7
                         canMoveToSquare = false;
                         opponentPiecesInReach.Add(new Vector2(position.X + i, position.Y));
                         piece.UnderAttack = true;
-
                         break;
                     }
-                    
 
                     if (piece.Position.X == position.X + i && piece.Position.Y == position.Y)
                     {
                         canMoveToSquare = false;
                         break;
                     }
-
                 }
                 if (canMoveToSquare)
                 {
@@ -89,7 +79,6 @@ namespace ConsoleApp7
                         canMoveToSquare = false;
                         opponentPiecesInReach.Add(new Vector2(position.X, position.Y + i));
                         piece.UnderAttack = true;
-
                         break;
                     }
                   
@@ -98,7 +87,6 @@ namespace ConsoleApp7
                         canMoveToSquare = false;
                         break;
                     }
-
                 }
                 if (canMoveToSquare)
                 {
@@ -125,17 +113,13 @@ namespace ConsoleApp7
                         canMoveToSquare = false;
                         opponentPiecesInReach.Add(new Vector2(position.X, position.Y - i));
                         piece.UnderAttack = true;
-
                         break;
                     }
-                 
-
                     if (piece.Position.X == position.X && piece.Position.Y == position.Y - i)
                     {
                         canMoveToSquare = false;
                         break;
                     }
-
                 }
                 if (canMoveToSquare)
                 {
@@ -162,7 +146,6 @@ namespace ConsoleApp7
                         canMoveToSquare = false;
                         opponentPiecesInReach.Add(new Vector2(position.X - i, position.Y));
                         piece.UnderAttack = true;
-
                         break;
                     }
                 
@@ -171,7 +154,6 @@ namespace ConsoleApp7
                         canMoveToSquare = false;
                         break;
                     }
-
                 }
                 if (canMoveToSquare)
                 {
@@ -185,7 +167,6 @@ namespace ConsoleApp7
             }
             MovesPossible = movesPossible;
             OpponentsPiecesInReach = opponentPiecesInReach;
-            
         }
         public override void BringDefendingPieces(List<Piece> Pieces, List<Vector2> checkSquares)
         {
@@ -207,17 +188,12 @@ namespace ConsoleApp7
                         goNext = true;
                         break;
                     }
-
-                    
-
                 }
                 if (goNext)
                 {
                     break;
                 }
-                
             }
-
             for (int i = 1; i < 8; i++)
             {
                 bool goNext = false;
@@ -227,7 +203,6 @@ namespace ConsoleApp7
                 }
                 foreach (Piece piece in Pieces)
                 {
-
                     if (piece.Position.X == position.X && piece.Position.Y == position.Y + i && ColorPiece == piece.ColorPiece)
                     {
                         ourPiecesInReach.Add(new Vector2(position.X, position.Y + i));
@@ -239,15 +214,12 @@ namespace ConsoleApp7
                 {
                     break;
                 }
-
             }
-
             for (int i = 1; i < 8; i++)
             {
                 bool goNext = false;
                 if (position.Y - i < 0)
                 {
-
                     break;
                 }
                 foreach (Piece piece in Pieces)
@@ -264,9 +236,7 @@ namespace ConsoleApp7
                 {
                     break;
                 }
-
             }
-
             for (int i = 1; i < 8; i++)
             {
                 bool goNext = false;
@@ -283,21 +253,14 @@ namespace ConsoleApp7
                         goNext = true;
                         break;
                     }
-
-                    
-
                 }
                 if (goNext)
                 {
                     break;
                 }
-
             }
 
             OurPiecesInReach = ourPiecesInReach;
         }
-
-        
-
     }
 }
